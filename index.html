@@ -252,19 +252,34 @@
             background-color: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 0.5rem;
-            padding: 1rem;
             transition: all 0.3s ease;
         }
         .feature-point-item-mobile:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .feature-title-mobile {
+        .feature-point-item-mobile summary {
+            padding: 1rem;
+            cursor: pointer;
             font-weight: 600;
             color: #316bff;
-            margin-bottom: 0.5rem;
+            list-style: none;
         }
-        .info-box-mobile {
+        .feature-point-item-mobile summary::-webkit-details-marker {
+            display: none;
+        }
+        .feature-point-item-mobile summary::after {
+            content: '+';
+            float: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #316bff;
+        }
+        .feature-point-item-mobile[open] summary::after {
+            content: '-';
+        }
+        .feature-point-item-mobile .info-box-mobile {
+            padding: 0 1rem 1rem 1rem;
             color: #6b7280;
             font-size: 0.875rem;
         }
@@ -331,54 +346,59 @@
                 </div>
                 <!-- Neuer Inhalt für die "Was kann Nina"-Sektion mit neuem Layout -->
                 <div class="relative max-w-6xl mx-auto my-10">
-                    <!-- Mobile Layout: Bild oben, Punkte darunter -->
+                    <!-- Mobile Layout: Erste 5 Blöcke oben, Bild, dann andere 5 Blöcke unten -->
                     <div class="md:hidden">
+                        <!-- Erste 5 Blöcke oberhalb des Bildes -->
+                        <div class="space-y-4 mb-8">
+                            <details class="feature-point-item-mobile">
+                                <summary>Anrufe entgegennehmen</summary>
+                                <div class="info-box-mobile">Nina meldet sich freundlich im Namen Ihres Unternehmens und übernimmt jedes Gespräch professionell.</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>Anrufe sortieren und filtern</summary>
+                                <div class="info-box-mobile">Sie erkennt, welche Anrufe wichtig sind (z. B. Kaufinteressenten) und welche Sie nicht weiter belasten sollen (Spam, irrelevante Fragen).</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>Spam- und Werbeanrufe blockieren</summary>
+                                <div class="info-box-mobile">Unerwünschte Anrufe werden automatisch aussortiert.</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>Wichtigste Infos zusammenfassen</summary>
+                                <div class="info-box-mobile">Nach jedem Gespräch erstellt Nina eine klare Zusammenfassung mit den Kerndaten (Name, Anliegen, Rückrufnummer, Grund des Anrufs).</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>E-Mail-Beantwortung</summary>
+                                <div class="info-box-mobile">Nina liest eingehende Mails, antwortet nach Ihren Richtlinien (Templates/CI) und markiert wichtige Anfragen für Sie. Auf Wunsch legt sie Follow-ups und Erinnerungen an.</div>
+                            </details>
+                        </div>
+
                         <!-- Zentrales Bild für mobile -->
                         <div class="flex justify-center mb-8">
                             <img id="nina-image-mobile" src="daskannnina.png" alt="Visualisierung der Fähigkeiten von Nina" class="w-64 h-auto">
                         </div>
-                        <!-- Alle Punkte in einer vertikalen Liste für mobile -->
-                        <div class="space-y-6">
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Anrufe entgegennehmen</div>
-                                <div class="info-box-mobile">Nina meldet sich freundlich im Namen Ihres Unternehmens und übernimmt jedes Gespräch professionell.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Anrufe sortieren und filtern</div>
-                                <div class="info-box-mobile">Sie erkennt, welche Anrufe wichtig sind (z. B. Kaufinteressenten) und welche Sie nicht weiter belasten sollen (Spam, irrelevante Fragen).</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Spam- und Werbeanrufe blockieren</div>
-                                <div class="info-box-mobile">Unerwünschte Anrufe werden automatisch aussortiert.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Wichtigste Infos zusammenfassen</div>
-                                <div class="info-box-mobile">Nach jedem Gespräch erstellt Nina eine klare Zusammenfassung mit den Kerndaten (Name, Anliegen, Rückrufnummer, Grund des Anrufs).</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">E-Mail-Beantwortung</div>
-                                <div class="info-box-mobile">Nina liest eingehende Mails, antwortet nach Ihren Richtlinien (Templates/CI) und markiert wichtige Anfragen für Sie. Auf Wunsch legt sie Follow-ups und Erinnerungen an.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Kennt Ihr Unternehmen in- und auswendig</div>
+
+                        <!-- Andere 5 Blöcke unterhalb des Bildes -->
+                        <div class="space-y-4">
+                            <details class="feature-point-item-mobile">
+                                <summary>Kennt Ihr Unternehmen in- und auswendig</summary>
                                 <div class="info-box-mobile">Nina wird individuell auf Ihr Unternehmen trainiert und kennt Ihre Objekte, Dienstleistungen und Abläufe – sodass Anrufer den Eindruck haben, mit einer echten Teamassistenz zu sprechen.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">24/7 erreichbar</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>24/7 erreichbar</summary>
                                 <div class="info-box-mobile">Auch nach Feierabend, am Wochenende oder wenn Sie gerade unterwegs sind: Nina ist immer verfügbar.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Lead-Qualifizierung</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>Lead-Qualifizierung</summary>
                                 <div class="info-box-mobile">Nina stellt die richtigen Fragen, um herauszufinden, ob ein Anrufer qualifiziert ist – und priorisiert die Kontakte für Sie.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Eigenes Interface oder CRM-Integration</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>Eigenes Interface oder CRM-Integration</summary>
                                 <div class="info-box-mobile">Alle Gespräche, Notizen und Zusammenfassungen finden Sie gesammelt im Nina-Interface … ohne nötige Extra-App.</div>
-                            </div>
-                            <div class="feature-point-item-mobile">
-                                <div class="feature-title-mobile">Integrierter Web-Chatbot</div>
+                            </details>
+                            <details class="feature-point-item-mobile">
+                                <summary>Integrierter Web-Chatbot</summary>
                                 <div class="info-box-mobile">Nina beantwortet Fragen direkt auf Ihrer Website, qualifiziert Leads im Chat (Name, Kontaktdaten, Anliegen, Infos zum Telefonat, Qualifizierung) und übergibt Gespräche samt Notizen automatisch an Ihr CRM/Interface.</div>
-                            </div>
+                            </details>
                         </div>
                     </div>
 
