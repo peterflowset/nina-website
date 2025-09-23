@@ -895,8 +895,10 @@
                     </div>
 
                     <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl">
-                        <div id="form-message" class="hidden mb-6 p-4 rounded-lg"></div>
-                        <form id="contact-form-element" class="space-y-6">
+                        <!-- Contact Form -->
+                        <div id="contact-form-container">
+                            <div id="form-message" class="hidden mb-6 p-4 rounded-lg"></div>
+                            <form id="contact-form-element" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="firstname" class="block text-sm font-medium text-gray-700 mb-2">Vorname *</label>
@@ -936,6 +938,59 @@
                                 </button>
                             </div>
                         </form>
+                        </div>
+
+                        <!-- Thank You Page -->
+                        <div id="thank-you-container" class="hidden text-center">
+                            <div class="mb-8">
+                                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Vielen Dank für Ihre Anfrage!</h3>
+                                <p class="text-lg text-gray-600 mb-6">
+                                    Wir haben Ihre Nachricht erhalten und werden uns innerhalb der nächsten 24 Stunden bei Ihnen melden.
+                                </p>
+                                <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                                    <h4 class="font-semibold text-gray-900 mb-2">Was passiert als nächstes?</h4>
+                                    <ul class="text-left text-gray-700 space-y-2">
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            Unser Team prüft Ihre Anfrage
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            Wir kontaktieren Sie für Details
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            Individuelle Beratung und Angebot
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                            </svg>
+                                            Start Ihres kostenlosen Testzeitraums
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <a href="#features" class="cta-button bg-[#316bff] text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90">
+                                        Mehr über Nina erfahren
+                                    </a>
+                                    <a href="#pricing" class="cta-button border border-blue-600 text-blue-600 font-semibold py-3 px-6 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">
+                                        Preise ansehen
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1074,9 +1129,9 @@
                     });
 
                     if (response.ok) {
-                        formMessage.className = 'mb-6 p-4 rounded-lg bg-green-100 text-green-800 border border-green-200';
-                        formMessage.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns bald bei Ihnen.';
-                        formMessage.classList.remove('hidden');
+                        // Hide form and show thank you page
+                        document.getElementById('contact-form-container').classList.add('hidden');
+                        document.getElementById('thank-you-container').classList.remove('hidden');
                         contactForm.reset();
                     } else {
                         throw new Error('Server responded with error');
